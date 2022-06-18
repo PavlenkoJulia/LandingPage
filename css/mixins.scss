@@ -1,0 +1,31 @@
+@mixin medium-desktop {
+    @media screen {
+        max-width: 1199px;
+        min-width: 992px;
+    }
+}
+
+@mixin small-desktop {
+    @media screen {
+        max-width: 991px;
+        min-width: 768px;
+    }
+}
+
+@mixin landscape-phone {
+    @media screen {
+        max-width: 767px;
+    }
+}
+
+@mixin portrait-phone {
+    @media screen {
+        max-width: 480px;
+    }
+}
+
+@mixin Iphone-5 {
+    @media screen {
+        max-width: 320px;
+    }
+}

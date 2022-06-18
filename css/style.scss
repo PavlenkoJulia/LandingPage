@@ -1,0 +1,971 @@
+@import "./vars.scss";
+@import "./fonts.scss";
+@import "./mixins.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+// Typorgaphy
+h1 {
+    font-family: $semiBold;
+    font-size: 96px;
+    line-height: 116px;
+    color: $white;
+}
+
+h2 {
+    font-family: $regular;
+    font-size: 32px;
+    line-height: 130%;
+    color: $white;
+}
+
+h3 {
+    font-family: $regular;
+    font-size: 24px;
+    line-height: 140%;
+    color: $white;
+}
+
+p {
+    font-family: $regular;
+    font-size: 16px;
+    line-height: 150%;
+    color: $white;
+}
+
+a {
+    font-family: $regular;
+    font-size: 16px;
+    line-height: 19px;
+    color: $white;
+}
+
+button {
+    font-family: $semiBold;
+    font-size: 17px;
+    line-height: 21px;
+    color: $white;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.container {
+    padding: 40px 200px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    &__search {
+        margin-right: 35px;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        transition: all .2s linear;
+
+        &:hover {
+            opacity: .5;
+        }
+
+        & svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.nav {
+    &__list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item:not(last-child) {
+        margin-right: 35px;
+    }
+
+    &__link {
+        text-decoration: none;
+        position: relative;
+        padding: 5px;
+
+        &:hover::after {
+            width: 100%;
+            right: 0;
+        }
+
+        &::after {
+            background: none repeat scroll 0 0 transparent;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            right: 0;
+            position: absolute;
+            background: linear-gradient(to left, $white, $grey 100%);
+            transition: width .5s ease 0s, right .5s ease 0s;
+            width: 0;
+        }
+    }
+}
+
+.logo {
+    font-family: $medium;
+    font-size: 32px;
+    line-height: 130%;
+    text-decoration: none;
+}
+
+.hero {
+    height: 100vh;
+    min-height: 700px;
+    background-image: url(../img/main.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &__title {
+        margin-top: 200px;
+        margin-bottom: 30px;
+    }
+}
+
+.btn {
+    &--light {
+        background-color: $white;
+        border: none;
+        color: $darkGrey;
+        cursor: pointer;
+        padding: 20px 40px 19px 40px;
+        margin-top: 34px;
+        transition: all .2s linear;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    &--dark {
+        background-color: $darkGrey;
+        border: none;
+        color: $white;
+        cursor: pointer;
+        padding: 20px 40px 19px 40px;
+        transition: all .2s linear;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    &--facilities {
+        margin-bottom: 209px;
+    }
+}
+
+.about {
+    margin-top: 150px;
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 190px;
+    }
+
+    &__title {
+        margin: 0 0 60px 0;
+        color: $darkGrey;
+    }
+
+    &__paragraph {
+        margin-bottom: 40px;
+        color: $darkGrey;
+    }
+
+    &__item {
+        margin-bottom: 60px;
+    }
+
+    &__video {
+        position: relative;
+        width: 100%;
+        height: 630px;
+        overflow: hidden;
+
+        & video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100px;
+        height: 100px;
+        transform: translate(-50%, -50%);
+
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: all .2s linear;
+
+        &:hover {
+            opacity: .8;
+        }
+
+        & svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &--hidden {
+            display: none;
+        }
+    }
+}
+
+.done {
+    &__number {
+        font-family: $light;
+        font-size: 64px;
+        line-height: 140%;
+    }
+
+    &__text {
+        font-family: $regular;
+        font-size: 16px;
+        line-height: 150%;
+    }
+}
+
+.portfolio {
+    margin-bottom: 190px;
+    &-item {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        &__column {
+            margin-right: 60px;
+        }
+
+        &__title {
+            color: $grey;
+            padding-top: 70px;
+            padding-bottom: 20px;
+            margin: 0;
+        }
+
+        &__text {
+            color: $darkGrey;
+            margin: 0;
+            padding-bottom: 60px;
+        }
+
+        &__img {
+            max-width: 570px;
+            width: 100%;
+            max-height: 400px;
+            height: 100%;
+
+            &--right {
+                margin-bottom: 139px;
+            }
+        }
+    }
+}
+
+.quote {
+    margin-bottom: 190px;
+    &__title {
+        color: $grey;
+        font-size: 16px;
+        line-height: 24px;
+        font-family: $light;
+    }
+
+    &__content {
+        margin: 0;
+    }
+
+    &__text {
+        color: $darkGrey;
+        font-family: $medium;
+        font-size: 36px;
+        line-height: 54px;
+        margin: 50px 0 30px 0;
+    }
+
+    &__author {
+        font-family: $regular;
+        font-size: 16px;
+        font-style: normal;
+        line-height: 24px;
+        color: $grey;
+
+        & span {
+            color: $darkGrey;
+        }
+    }
+}
+
+.services {
+    margin-bottom: 244px;
+    &__img {
+        background-size: cover;
+        width: 100%;
+        max-height: 900px;
+        height: 100%;
+        margin-bottom: 190px;
+    }
+
+    &-item {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            height: 1px;
+            background: $grey;
+            width: 100%;
+            opacity: .4;
+        }
+
+        &__title {
+            font-family: $medium;
+            color: $darkGrey;
+            margin: 0;
+        }
+
+        &__text {
+            color: $grey;
+            margin: 0;
+        }
+
+        &__column {
+            &--right {
+                max-width: 570px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.footer {
+    background-color: $darkGrey;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__address {
+        margin-top: 48px;
+        margin-right: 200px;
+        color: $grey;
+        font-family: $regular;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    &__social {
+        display: flex;
+    }
+
+    &__title {
+        margin: 0 0 30px 0;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        max-width: 570px;
+        width: 100%;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background: $grey;
+            width: 100%;
+        }
+    }
+
+    &__input {
+        border: none;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 0 24px 0;
+        background: transparent;
+        outline: none;
+
+        // placeholder styles
+        font-family: $regular;
+        color: $grey;
+        font-size: 13px;
+        line-height: 16px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+    }
+
+    &__btn {
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        opacity: .5;
+        transition: all .2s linear;
+
+        &:hover,
+        &:focus {
+            opacity: 1;
+        }
+    }
+}
+
+.social__item {
+    margin-right: 20px;
+    margin-top: 30px;
+    transition: all .2s linear;
+
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.social__link:visited {
+    opacity: .8;
+}
+
+
+.burger {
+    padding: 9px 2px;
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    &__item {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: $white;
+    
+        position: relative;
+
+        &::before,
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+        
+            background-color: $white;
+        
+            position: absolute;
+            left: 0;
+            z-index: 1;
+        }
+
+        &::before {
+            top: -8px;
+        }
+
+        &::after {
+            bottom: -8px;
+        }
+    }
+}
+
+// Media queries
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container {
+        padding: 40px 130px;
+    }
+
+    .nav__item:not(last-child) {
+        margin-right: 25px;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .container {
+        padding: 40px 100px;
+    }
+
+    .nav__item:not(last-child) {
+        margin-right: 20px;
+    }
+
+    .nav__link {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .header__search {
+        margin-right: 20px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .hero__title {
+        font-size: 82px;
+        line-height: 94px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .about {
+        margin-top: 100px;
+
+        &__title {
+            font-size: 24px;
+            margin: 0 0 20px 0;
+        }
+
+        &__paragraph {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    }
+
+    .done__number {
+        font-size: 52px;
+        line-height: 120%;
+    }
+
+    .portfolio-item {
+        &__img {
+        max-height: 350px;
+
+            &--right {
+                margin-bottom: 165px;
+            }
+        }
+
+        &__title {
+            padding-top: 30px;
+        }
+
+        &__text {
+            padding-bottom: 35px;
+        }
+    }
+
+    .quote__text {
+        font-size: 26px;
+        line-height: 40px;
+    }
+
+    .services {
+        margin-bottom: 150px;
+    }
+
+    .services-item {
+        &__title {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        &__text {
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    }
+
+    .footer {
+        &__address {
+            font-size: 14px;
+            margin-right: 100px;
+            margin-top: 20px;
+        }
+
+        &__title {
+            font-size: 26px;
+        }
+    }
+
+    .social__item {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 40px 40px;
+    }
+
+    .header__nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+
+        text-align: right;
+        // background-color: #31344e;
+
+        position: absolute;
+        right: 0;
+        top: 100%;
+
+        &.show {
+            display: flex;
+        }
+    }
+
+    .nav__item:not(last-child) {
+        margin-right: 20px;
+    }
+
+    .nav__link {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .header__search {
+        width: 20px;
+        height: 20px;
+    }
+
+    .burger {
+        display: block;
+        transition: all .2s linear;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    .hero__title {
+        font-size: 70px;
+        line-height: 80px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .btn {
+        padding: 16px 30px;
+    }
+
+    .about {
+        margin-top: 100px;
+
+        &__wrapper {
+            margin-bottom: 100px;
+        }
+
+        &__title {
+            font-size: 16px;
+            margin: 0 0 15px 0;
+        }
+
+        &__paragraph {
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+    }
+
+    .done__number {
+        font-size: 40px;
+        line-height: 120%;
+    }
+
+    .done__text {
+        font-size: 14px;
+    }
+
+    .portfolio-item {
+        &__img {
+        max-height: 300px;
+
+            &--right {
+                margin-bottom: 165px;
+            }
+        }
+
+        &__title {
+            padding-top: 10px;
+            font-size: 14px;
+        }
+
+        &__text {
+            padding-bottom: 20px;
+            font-size: 12px;
+        }
+
+        &__column {
+            margin-right: 10px;
+        }
+    }
+
+    .quote {
+        margin-bottom: 100px;
+    }
+
+    .quote__text {
+        font-size: 24px;
+        line-height: 36px;
+        margin: 25px 0;
+    }
+
+    .services {
+        margin-bottom: 100px;
+
+        &__img {
+            margin-bottom: 90px;
+        }
+    }
+
+    .services-item {
+        &__title {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        &__text {
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    }
+
+    .footer {
+        &__address {
+            font-size: 14px;
+            margin-right: 40px;
+            margin-top: 20px;
+        }
+
+        &__title {
+            font-size: 22px;
+        }
+    }
+
+    .social__item {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    .social__link svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 20px;
+    }
+
+    .header__nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+
+        text-align: right;
+
+        position: absolute;
+        right: 0;
+        top: 100%;
+
+        &.show {
+            display: flex;
+        }
+    }
+
+    .nav__item:not(last-child) {
+        margin-right: 10px;
+    }
+
+    .nav__link {
+        font-size: 14px;
+        line-height: 17px;
+
+        &::after {
+            bottom: 15px;
+        }
+    }
+
+    .header__search {
+        width: 20px;
+        height: 20px;
+    }
+
+    .burger {
+        display: block;
+        transition: all .2s linear;
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+
+    .hero__title {
+        font-size: 40px;
+        line-height: 45px;
+        margin-top: 90px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    .about {
+        margin-top: 80px;
+
+        &__wrapper {
+            margin-bottom: 80px;
+        }
+
+        &__title {
+            font-size: 14px;
+            margin: 0 0 10px 0;
+        }
+
+        &__paragraph {
+            margin-bottom: 15px;
+            font-size: 10px;
+        }
+    }
+
+    .done__number {
+        font-size: 26px;
+        line-height: 120%;
+    }
+
+    .done__text {
+        font-size: 12px;
+    }
+
+    .portfolio {
+        margin-bottom: 0;
+    }
+
+    .portfolio-item {
+        &__img {
+            display: none;
+        }
+
+        &__title {
+            padding-top: 10px;
+            font-size: 14px;
+        }
+
+        &__text {
+            padding-bottom: 20px;
+            font-size: 12px;
+        }
+
+        &__column {
+            margin-right: 10px;
+        }
+    }
+
+    .quote {
+        margin-bottom: 80px;
+    }
+
+    .quote__text {
+        font-size: 16px;
+        line-height: 22px;
+        margin: 20px 0;
+    }
+
+    .quote__author {
+        font-size: 12px;
+    }
+
+    .services {
+        margin-bottom: 80px;
+
+        &__img {
+            margin-bottom: 70px;
+        }
+    }
+
+    .services-item {
+        &__title {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        &__text {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+    }
+
+    .footer {
+        &__address {
+            font-size: 12px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        &__title {
+            font-size: 16px;
+        }
+    }
+
+    .social__item {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    .social__link svg {
+        width: 30px;
+        height: 30px;
+    }
+}
